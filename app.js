@@ -35,12 +35,10 @@ qdci.get('/', function(req, res){
  * For testing, you'll need to use postman, curl etc to create a POST request instead of a GET
  */
 qdci.post('/pull', function(req, res) {
-    console.log('A "git pull" command has been invoked via RPC...');
+    console.log('A "git pull" command has been initiated.');
 
-    // At this point, we'd want to process the request and determine if the token was passed through
-    // so that only authorized requests can initiate this process. I'm going to leave that out for now.
+    //todo: add security here (check req.payload hash)
     console.warn('Warning: this method is not yet secured!');
-    // todo: add real security!
 
     // make sure the script is executable before attempting to run:
     fs.chmodSync(GIT_PULL_SCRIPT_PATH, 0755);
