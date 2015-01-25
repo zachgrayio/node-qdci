@@ -1,0 +1,25 @@
+{
+  "name": "node-qdci",
+  "version": "1.0.0",
+  "description": "Quick & Dirty Continuous Integration via Github Webhooks!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(git@github.com:zachgrayio/node-qdci.git)"
+  },
+  "keywords": [
+    "github",
+    "webhooks",
+    "continuous",
+    "integration"
+  ],
+  "author": "Zach Gray <zach@zachgray.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zachgrayio/node-qdci.git)/issues"
+  },
+  "homepage": "https://github.com/zachgrayio/node-qdci.git)"
+}
