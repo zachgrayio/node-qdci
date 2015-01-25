@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/zachgrayio/node-qdci.git)/issues"
   },
-  "homepage": "https://github.com/zachgrayio/node-qdci.git)"
+  "homepage": "https://github.com/zachgrayio/node-qdci.git)",
+  "dependencies": {
+    "express": "^4.11.1"
+  }
 }
