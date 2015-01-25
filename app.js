@@ -1,20 +1,25 @@
+// standard express stuff
 var express        = require('express');
 var morgan         = require('morgan');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
+// fs and exec for interacting with the file system and running a shell command
 var fs             = require('fs');
 var exec           = require('child_process').exec;
+
+// our quick & dirty CI app
 var qdci           = express();
-var gitChildProc;
 
-var GIT_PULL_SCRIPT_PATH = "./git_pull.sh";
-var PORT = 8080;
-
+// set up middleware
 qdci.use(express.static(__dirname + '/public'));
 qdci.use(morgan('dev'));
 qdci.use(bodyParser.urlencoded({ extended: false }));
 qdci.use(bodyParser.json());
 qdci.use(methodOverride());
+
+// some config constants
+var GIT_PULL_SCRIPT_PATH = "./git_pull.sh";
+var PORT = 8080;
 
 /**
  * Define a GET route so we can easily check if the CI server is running
@@ -40,8 +45,8 @@ qdci.post('/pull', function(req, res) {
     // make sure the script is executable before attempting to run:
     fs.chmodSync(GIT_PULL_SCRIPT_PATH, 0755);
 
-    // execute the pull script
-    gitChildProc = exec(GIT_PULL_SCRIPT_PATH,
+    // execute the pull script, writing the returned child proc to var, in case we want to use it later.
+    var gitChildProc = exec(GIT_PULL_SCRIPT_PATH,
         function(error, stdout, stderr){
             if(stdout){
                 console.log('Command Results:\n' + stdout);
